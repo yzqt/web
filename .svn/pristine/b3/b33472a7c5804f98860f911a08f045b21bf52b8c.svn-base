@@ -1,0 +1,94 @@
+[05/Jan/2016 20:56:50] WARNING [django.request:170] Not Found: /favicon.ico
+[05/Jan/2016 20:56:50] WARNING [django.request:170] Not Found: /favicon.ico
+[05/Jan/2016 20:59:28] ERROR [django.request:256] Internal Server Error: /zened/
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\django\core\handlers\base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\接收\web-connect-master\web-connect-master\zen\views.py", line 47, in zened
+    if not ret:
+  File "C:\Python27\lib\site-packages\django\db\models\query.py", line 170, in __nonzero__
+    return type(self).__bool__(self)
+  File "C:\Python27\lib\site-packages\django\db\models\query.py", line 166, in __bool__
+    self._fetch_all()
+  File "C:\Python27\lib\site-packages\django\db\models\query.py", line 965, in _fetch_all
+    self._result_cache = list(self.iterator())
+  File "C:\Python27\lib\site-packages\django\db\models\query.py", line 238, in iterator
+    results = compiler.execute_sql()
+  File "C:\Python27\lib\site-packages\django\db\models\sql\compiler.py", line 840, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Python27\lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "C:\Python27\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Python27\lib\site-packages\django\db\utils.py", line 97, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "C:\Python27\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Python27\lib\site-packages\django\db\backends\mysql\base.py", line 124, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Python27\lib\site-packages\MySQLdb\cursors.py", line 174, in execute
+    self.errorhandler(self, exc, value)
+  File "C:\Python27\lib\site-packages\MySQLdb\connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+ProgrammingError: (1146, "Table 'citta.zen_male' doesn't exist")
+[05/Jan/2016 21:33:08] INFO [django:48]  没有交费或者手机号、姓名和交费时填写不一致，请联系管理人员
+[05/Jan/2016 21:45:38] WARNING [django.request:170] Not Found: /js/bootstrap-3.3.2-dist/css/bootstrap.css
+[05/Jan/2016 21:45:38] WARNING [django.request:170] Not Found: /css/style.css
+[05/Jan/2016 21:45:38] WARNING [django.request:170] Not Found: /js/bootstrap-daterangepicker-master/daterangepicker-bs3.css
+[05/Jan/2016 21:45:38] WARNING [django.request:170] Not Found: /js/jquery-1.11.2.min.js
+[05/Jan/2016 21:45:38] WARNING [django.request:170] Not Found: /js/font-awesome-4.2.0/css/font-awesome.min.css
+[05/Jan/2016 21:45:38] WARNING [django.request:170] Not Found: /js/jquery.json-2.2-min.js
+[05/Jan/2016 21:45:38] WARNING [django.request:170] Not Found: /js/bootstrap-3.3.2-dist/js/bootstrap.js
+[05/Jan/2016 21:45:38] WARNING [django.request:170] Not Found: /js/jquery.dateFormat.js
+[05/Jan/2016 21:45:38] WARNING [django.request:170] Not Found: /js/bootstrap-daterangepicker-master/moment.js
+[05/Jan/2016 21:45:39] WARNING [django.request:170] Not Found: /js/bootstrap-daterangepicker-master/daterangepicker.js
+[05/Jan/2016 21:45:39] WARNING [django.request:170] Not Found: /js/main.js
+[05/Jan/2016 21:45:39] WARNING [django.request:170] Not Found: /js/bootstrap-3.3.2-dist/js/bootstrap.js
+[05/Jan/2016 21:45:39] WARNING [django.request:170] Not Found: /js/jquery.dateFormat.js
+[05/Jan/2016 21:45:39] WARNING [django.request:170] Not Found: /js/bootstrap-daterangepicker-master/moment.js
+[05/Jan/2016 21:45:39] WARNING [django.request:170] Not Found: /js/bootstrap-daterangepicker-master/daterangepicker.js
+[05/Jan/2016 21:45:39] WARNING [django.request:170] Not Found: /js/main.js
+[05/Jan/2016 21:47:47] WARNING [django.request:170] Not Found: /js/bootstrap-3.3.2-dist/css/bootstrap.css
+[05/Jan/2016 21:47:47] WARNING [django.request:170] Not Found: /js/bootstrap-daterangepicker-master/daterangepicker-bs3.css
+[05/Jan/2016 21:47:47] WARNING [django.request:170] Not Found: /css/style.css
+[05/Jan/2016 21:47:47] WARNING [django.request:170] Not Found: /js/font-awesome-4.2.0/css/font-awesome.min.css
+[05/Jan/2016 21:47:47] WARNING [django.request:170] Not Found: /js/jquery.json-2.2-min.js
+[05/Jan/2016 21:47:47] WARNING [django.request:170] Not Found: /js/jquery-1.11.2.min.js
+[05/Jan/2016 21:47:47] WARNING [django.request:170] Not Found: /js/bootstrap-3.3.2-dist/js/bootstrap.js
+[05/Jan/2016 21:47:48] WARNING [django.request:170] Not Found: /js/jquery.dateFormat.js
+[05/Jan/2016 21:47:48] WARNING [django.request:170] Not Found: /js/bootstrap-daterangepicker-master/moment.js
+[05/Jan/2016 21:47:48] WARNING [django.request:170] Not Found: /js/bootstrap-daterangepicker-master/daterangepicker.js
+[05/Jan/2016 21:47:48] WARNING [django.request:170] Not Found: /js/main.js
+[05/Jan/2016 21:47:48] WARNING [django.request:170] Not Found: /js/jquery.json-2.2-min.js
+[05/Jan/2016 21:47:48] WARNING [django.request:170] Not Found: /js/bootstrap-3.3.2-dist/js/bootstrap.js
+[05/Jan/2016 21:47:49] WARNING [django.request:170] Not Found: /js/jquery.dateFormat.js
+[05/Jan/2016 21:47:49] WARNING [django.request:170] Not Found: /js/bootstrap-daterangepicker-master/moment.js
+[05/Jan/2016 21:47:49] WARNING [django.request:170] Not Found: /js/bootstrap-daterangepicker-master/daterangepicker.js
+[05/Jan/2016 21:47:49] WARNING [django.request:170] Not Found: /js/main.js
+[05/Jan/2016 21:49:40] WARNING [django.request:170] Not Found: /js/bootstrap-3.3.2-dist/css/bootstrap.css
+[05/Jan/2016 21:49:40] WARNING [django.request:170] Not Found: /css/style.css
+[05/Jan/2016 21:49:40] WARNING [django.request:170] Not Found: /js/bootstrap-daterangepicker-master/daterangepicker-bs3.css
+[05/Jan/2016 21:49:40] WARNING [django.request:170] Not Found: /js/font-awesome-4.2.0/css/font-awesome.min.css
+[05/Jan/2016 21:49:40] WARNING [django.request:170] Not Found: /js/jquery-1.11.2.min.js
+[05/Jan/2016 21:49:40] WARNING [django.request:170] Not Found: /js/jquery.json-2.2-min.js
+[05/Jan/2016 21:49:40] WARNING [django.request:170] Not Found: /js/bootstrap-3.3.2-dist/js/bootstrap.js
+[05/Jan/2016 21:49:40] WARNING [django.request:170] Not Found: /js/jquery.dateFormat.js
+[05/Jan/2016 21:49:40] WARNING [django.request:170] Not Found: /js/bootstrap-daterangepicker-master/moment.js
+[05/Jan/2016 21:49:41] WARNING [django.request:170] Not Found: /js/bootstrap-daterangepicker-master/daterangepicker.js
+[05/Jan/2016 21:49:41] WARNING [django.request:170] Not Found: /js/main.js
+[05/Jan/2016 21:49:41] WARNING [django.request:170] Not Found: /js/jquery.json-2.2-min.js
+[05/Jan/2016 21:49:41] WARNING [django.request:170] Not Found: /js/bootstrap-3.3.2-dist/js/bootstrap.js
+[05/Jan/2016 21:49:42] WARNING [django.request:170] Not Found: /js/jquery.dateFormat.js
+[05/Jan/2016 21:49:42] WARNING [django.request:170] Not Found: /js/bootstrap-daterangepicker-master/moment.js
+[05/Jan/2016 21:49:42] WARNING [django.request:170] Not Found: /js/bootstrap-daterangepicker-master/daterangepicker.js
+[05/Jan/2016 21:49:42] WARNING [django.request:170] Not Found: /js/main.js
+[05/Jan/2016 21:51:46] WARNING [django.request:170] Not Found: /css/style.css
+[05/Jan/2016 21:51:46] WARNING [django.request:170] Not Found: /js/jquery.json-2.2-min.js
+[05/Jan/2016 21:51:46] WARNING [django.request:170] Not Found: /js/jquery-1.11.2.min.js
+[05/Jan/2016 21:51:46] WARNING [django.request:170] Not Found: /js/jquery.dateFormat.js
+[05/Jan/2016 21:51:47] WARNING [django.request:170] Not Found: /js/main.js
+[05/Jan/2016 21:51:47] WARNING [django.request:170] Not Found: /js/jquery.json-2.2-min.js
+[05/Jan/2016 21:51:47] WARNING [django.request:170] Not Found: /js/jquery.dateFormat.js
+[05/Jan/2016 21:51:48] WARNING [django.request:170] Not Found: /js/main.js
+[05/Jan/2016 22:02:45] WARNING [django.request:170] Not Found: /data/pronvince.json
+[05/Jan/2016 22:03:35] WARNING [django.request:170] Not Found: /data/pronvince.json

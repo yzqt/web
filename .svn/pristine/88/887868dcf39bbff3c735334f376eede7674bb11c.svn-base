@@ -1,0 +1,217 @@
+$(function() {
+	initDatePicker("datepicker");
+	initDateRangePicker("school_time");
+	$("input[name='sex']").change(function(){
+		$("#sex").val($(this).val());
+	});
+});
+
+// 单个时间选择
+function initDatePicker(targetId) {
+	var option = {
+		format : "YYYY-MM-DD",
+		singleDatePicker : true,
+		locale : {
+			daysOfWeek : [ '日', '一', '二', '三', '四', '五', '六' ],
+			monthNames : [ '正月', '二月', '三月', '四', '五月', '六月', '七月', '八月', '九月',
+					'十月', '十一月', '腊月' ]
+		},
+		opens : 'left'
+	};
+	$('#' + targetId).daterangepicker(option);
+	initAddr();
+}
+
+function initDateRangePicker(targetId) {
+	var option = {
+		format : "YYYY-MM-DD",
+		separator : ' ~ ',
+		locale : {
+			applyLabel : '确定',
+			cancelLabel : '取消',
+			fromLabel : '开始',
+			toLabel : '结束',
+			customRangeLabel : '自定义',
+			daysOfWeek : [ '日', '一', '二', '三', '四', '五', '六' ],
+			monthNames : [ '正月', '二月', '三月', '四', '五月', '六月', '七月', '八月', '九月',
+					'十月', '十一月', '腊月' ]
+		},
+		showWeekNumbers : true,
+		startDate : moment().subtract('days', 7),
+		endDate : moment().subtract('days', 1),
+		opens : "right",
+		ranges : {
+			'昨天' : [ moment().subtract('days', 1), moment().subtract('days', 1) ],
+			'前7天' : [ moment().subtract('days', 7),
+					moment().subtract('days', 1) ],
+			'前14天' : [ moment().subtract('days', 14),
+					moment().subtract('days', 1) ],
+			'前30天' : [ moment().subtract('days', 30),
+					moment().subtract('days', 1) ],
+			'前90天' : [ moment().subtract('days', 90),
+					moment().subtract('days', 1) ],
+		}
+	};
+	$('#' + targetId).daterangepicker(option);
+}
+
+// ============ 地址选择 ==============//
+
+//加载省份信息
+function initAddr() {
+	//加载省份
+	$.ajax({
+		url : '/static/data/pronvince.json',
+		type : "post",
+		dataType : "json",
+		async : false,
+		data : {
+		},
+		success : function(response){
+			var province_options = "<option selected='selected' value=''>请选择省</option>";
+			for(var i=0; i<response.length; i++){
+				var province = response[i];
+				province_options += "<option value='"+province.ProID+"'>"+province.name+"</option>";
+			}
+			$("#province").html(province_options);
+		},
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+            alert(XMLHttpRequest.status);
+            alert(XMLHttpRequest.readyState);
+            alert(errorThrown);
+		}
+	});
+	
+	//当省份发生变化时
+	$("#province").change(function(){
+		 var province = $(this).val();
+		 var city_options = "<option selected='selected' value=''>请选择市</option>";
+		 var area_options = "<option selected='selected' value=''>请选择区</option>";
+		 if(null==province||""==province){
+			 $("#city").html(city_options);
+		 }else{//根据所选省份，列出市区
+			 $.ajax({
+					url : '/static/data/city.json',
+					type : "post",
+					dataType : "json",
+					async : false,
+					data : {
+					},
+					success : function(response){
+						for(var i=0; i<response.length; i++){
+							var city = response[i];
+							if(city.ProID==province){
+								city_options += "<option value='"+city.CityID+"'>"+city.name+"</option>";
+							}
+						}
+						$("#city").html(city_options);
+					},
+					error : function(XMLHttpRequest, textStatus, errorThrown) {
+			            alert(XMLHttpRequest.status);
+			            alert(XMLHttpRequest.readyState);
+			            alert(errorThrown);
+					}
+				});
+		 }
+		 $("#area").html(area_options);
+		 
+	});
+	
+	//市发生变化时
+	$("#city").change(function(){
+		var city = $(this).val();
+		var area_options = "<option selected='selected' value=''>请选择区</option>";
+		if(null==city||""==city){
+			$("#area").html(city_options);
+		}else{
+			$.ajax({
+				url : '/static/data/area.json',
+				type : "post",
+				dataType : "json",
+				async : false,
+				data : {
+				},
+				success : function(response){
+					for(var i=0; i<response.length; i++){
+						var area = response[i];
+						if(area.CityID==city){
+							area_options += "<option value='"+area.ID+"'>"+area.DisName+"</option>";
+						}
+					}
+					$("#area").html(area_options);
+				},
+				error : function(XMLHttpRequest, textStatus, errorThrown) {
+		            alert(XMLHttpRequest.status);
+		            alert(XMLHttpRequest.readyState);
+		            alert(errorThrown);
+				}
+			});
+		}
+	});
+}
+
+// ============ 地址选择结束 ==============//
+
+
+function saveBaseInfo(){
+	var name = $("#name").val();
+	var mobile = $("#mobile").val();
+	var idnumber = $("#idnumber").val();
+	var sex = $("#sex").val();
+	var telphone = $("#telphone").val();
+	var mz = $("#mz").val();
+	var occu = $("#occu").val();
+	var likes = $("#likes").val();
+	var birthday = $("#datepicker").val();
+	var health = $("#health").val();
+	var province = $("#province").val();
+	var city = $("#city").val();
+	var area = $("#area").val();
+	var detailaddr = $("#detailaddr").val();
+	var yzbm = $("#yzbm").val();
+	
+	//参数合理性判断
+	if(null==name||""==name.trim()){
+		alert("请填写姓名!");
+		$("#name").focus();
+		return false;
+	}
+	if(null==mobile||""==mobile.trim()){
+		alert("请填写手机!");
+		$("#mobile").focus();
+		return false;
+	}
+	if (!$("#mobile").val().match(/^(((13[0-9]{1})|159|153)+\d{8})$/)) { 
+		alert("手机号格式不正确!");
+		$("#mobile").focus();
+		return false;
+	}
+	
+	//将数据提交到后台，把添加结果返回来
+	$.ajax({
+		url : '/static/data/consel.json',
+		type : "post",
+		dataType : "json",
+		async : false,
+		data : {
+			name : name,
+			mobile : mobile,
+			idnumber :idnumber
+			//其他类似
+		},
+		success : function(response){
+			var success = response.success;
+			if(success==true || success == "true"){
+				alert("基本信息已保存");
+			}else{
+				alert(response.info);
+			}
+		},
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+            alert(XMLHttpRequest.status);
+            alert(XMLHttpRequest.readyState);
+            alert(errorThrown);
+		}
+	});
+	
+}
