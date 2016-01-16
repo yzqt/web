@@ -38,11 +38,11 @@ def zened(request):
     obj = ""
     dic = request.GET.dict()
     for key in dic.keys():
-        if(key=="province"):
+        if key == "province":
             dic['province']=dic['province'].split(',')[1]
-        if(key=="city"):
+        if key == "city":
             dic['city']=dic['city'].split(',')[1]
-        if(key=="district"):
+        if key == "district":
             dic['district']=dic['district'].split(',')[1]
 
     dic['comes'] = 1 # comes from web, which means already modified

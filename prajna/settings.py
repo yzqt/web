@@ -134,7 +134,7 @@ LOGGING = {
         'file': {
             'level': 'INFO',
             'class': 'logging.FileHandler',
-            'filename': 'prajna.log',
+            'filename': '/tmp/prajna.log',
             'formatter': 'verbose'
         },
     },
